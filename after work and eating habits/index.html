@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After Work &amp; in the Evening – Vocabulary Trainer</title>
+<style>
+:root{--ink:#243044;--muted:#687489;--paper:#f8f7f3;--white:#fff;--line:#e6e5e1;--lav:#ecebfa;--lav2:#dcd9f4;--mint:#e3f2eb;--peach:#fae9df;--blue:#e7f0f7;--accent:#6257a6;--good:#24734c;--bad:#a54040;--shadow:0 12px 34px rgba(50,54,77,.08)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1050px,calc(100% - 32px));margin:auto;padding:30px 0 60px}
+.hero{padding:28px 30px;border:1px solid #e9e6df;border-radius:24px;background:linear-gradient(115deg,#f0eefb 0%,#f8eee8 53%,#e9f3ed 100%);box-shadow:var(--shadow)}
+.eyebrow{margin:0 0 7px;color:#6c648d;font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+h1{margin:0;font-size:clamp(30px,5vw,48px);line-height:1.08;letter-spacing:-.04em}
+.hero p{max-width:650px;margin:12px 0 0;color:#525e70}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:20px 2px 12px}
+.progress-label{font-size:13px;color:var(--muted)}
+.progress{height:8px;margin-top:7px;overflow:hidden;border-radius:99px;background:#e8e6e0}
+.progress span{display:block;width:0;height:100%;border-radius:99px;background:linear-gradient(90deg,#8b82cf,#72b899);transition:width .25s}
+.reset{border:0;background:transparent;color:var(--muted);font-size:13px;text-decoration:underline;text-underline-offset:3px}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 20px}
+.nav button,.filter button{border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:#fff;color:#485468;font-weight:650}
+.nav button.active{border-color:var(--accent);background:var(--accent);color:white}
+.panel{min-height:350px;padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--white);box-shadow:var(--shadow)}
+.panelhead{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:18px}
+h2{margin:0;font-size:23px;letter-spacing:-.02em}
+.lead{margin:5px 0 0;color:var(--muted);font-size:14px}
+.filter{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0 20px}
+.filter button{padding:7px 11px;font-size:13px}
+.filter button.active{background:#eeeafa;border-color:#d8d3f0;color:#4c458b}
+.group{margin:20px 0 26px}
+.group h3{margin:0 0 10px;font-size:14px;color:#6e7180;letter-spacing:.04em;text-transform:uppercase}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.wordcard{min-height:150px;padding:16px;border:1px solid #e7e7e3;border-radius:15px;background:#fff}
+.wordcard:nth-child(4n+1){background:#fbfaff}.wordcard:nth-child(4n+2){background:#fbfdfb}
+.ru{margin:0 0 7px;font-weight:700}
+.example{margin:0 0 12px;color:#596477;font-size:14px}
+.answer{display:none;margin:0 0 10px;color:#3f4771;font-weight:700}
+.wordcard.revealed .answer{display:block}
+.cardactions{display:flex;gap:8px;align-items:center}
+.smallbtn{border:1px solid #dcd9f0;border-radius:9px;padding:7px 10px;background:#f6f4ff;color:#514a8c;font-size:13px;font-weight:700}
+.smallbtn.done{border-color:#bfe0cc;background:#eff9f2;color:#28714b}
+.question{margin:20px 0 8px;font-size:20px;font-weight:750}
+.context{padding:18px;border-radius:14px;background:#f5f4fb;color:#374255;font-size:18px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:18px 0}
+.option{border:1px solid var(--line);border-radius:12px;padding:12px 14px;text-align:left;background:#fff;color:var(--ink);font-weight:650}
+.option:hover{border-color:#aaa3d9;background:#fbfaff}
+.option.correct{border-color:#8dc6a5;background:#eff9f2;color:#246542}
+.option.wrong{border-color:#dfa0a0;background:#fff3f1;color:#913f3f}
+.feedback{min-height:28px;margin:8px 0;color:var(--muted);font-weight:650}
+.feedback.good{color:var(--good)}.feedback.bad{color:var(--bad)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.primary,.secondary{border:0;border-radius:11px;padding:11px 17px;font-weight:750}
+.primary{background:var(--accent);color:#fff}.primary:disabled{opacity:.45;cursor:not-allowed}
+.secondary{border:1px solid var(--line);background:#fff;color:#465166}
+.inputrow{display:flex;gap:9px;margin:18px 0 6px}
+.inputrow input{flex:1;min-width:0;border:1px solid #d8d9df;border-radius:11px;padding:12px 14px;outline:none}
+.inputrow input:focus{border-color:#8b82cf;box-shadow:0 0 0 3px #ecebfa}
+.counter{color:var(--muted);font-size:13px}
+.note{padding:11px 13px;border-left:3px solid #c9c3e9;background:#f8f7fc;color:#5d6171;font-size:14px}
+.endcard{padding:24px;border-radius:16px;background:#f3f8f4}
+.promptlist{display:grid;gap:9px;margin:16px 0}
+.promptitem{padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:white}
+.bank{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0}
+.chip{padding:6px 10px;border:1px solid #dedaf1;border-radius:99px;background:#f6f4ff;color:#524a8d;font-size:13px}
+.hidden{display:none!important}
+.footer{text-align:center;margin-top:15px;color:#8790a0;font-size:12px}
+@media(max-width:650px){.wrap{width:min(100% - 20px,1050px);padding-top:14px}.hero{padding:22px 19px}.panel{padding:17px}.cards,.options{grid-template-columns:1fr}.topline{align-items:flex-start}.panelhead{display:block}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+<p class="eyebrow">Vocabulary practice · Daily routine</p>
+<h1>After work<br>&amp; in the evening</h1>
+<p>Recall the expressions, choose the right phrase, complete the sentences, and use the vocabulary to talk about your evening.</p>
+</header>
+<div class="topline">
+<div style="flex:1"><div class="progress-label" id="progressText">Cards marked as recalled: 0 / 31</div><div class="progress"><span id="progressBar"></span></div></div>
+<button class="reset" id="resetProgress">Reset card progress</button>
+</div>
+<nav class="nav" aria-label="Practice sections">
+<button class="active" data-view="cards">1. Recall cards</button>
+<button data-view="choice">2. Choose</button>
+<button data-view="gaps">3. Gaps</button>
+<button data-view="repair">4. Fix the phrase</button>
+<button data-view="speak">5. Speaking</button>
+</nav>
+<main id="app" class="panel"></main>
+<p class="footer">Your card progress is saved in this browser.</p>
+</div>
+<script>
+"use strict";
+const vocab=[
+{id:"eatout",group:"Food & shopping",phrase:"to eat out",ru:"есть вне дома; ходить в кафе или ресторан",ex:"We don't feel like cooking. Let's ______ tonight.",clue:"You choose a café or restaurant instead of eating at home.",gap:"We don't feel like cooking. Let's ______ tonight.",answers:["eat out"]},
+{id:"cutdown",group:"Food & shopping",phrase:"to cut down on something",ru:"сократить потребление чего-либо",ex:"I'm trying to ______ coffee.",clue:"You want to reduce the amount of coffee you drink, but not stop completely.",gap:"I'm trying to ______ coffee.",answers:["cut down on"]},
+{id:"cutout",group:"Food & shopping",phrase:"to cut out something",ru:"полностью исключить что-либо из рациона",ex:"She decided to ______ sugar.",clue:"She wants to stop eating sugar completely.",gap:"She decided to ______ sugar completely.",answers:["cut out"]},
+{id:"buygroceries",group:"Food & shopping",phrase:"to buy groceries",ru:"покупать продукты и товары для дома",ex:"I need to ______ after work.",clue:"The fridge is empty, so you go shopping for food and household basics.",gap:"The fridge is empty. I need to ______ after work.",answers:["buy groceries"]},
+{id:"cookdinner",group:"Food & shopping",phrase:"to cook dinner",ru:"готовить ужин",ex:"I'll ______ tonight.",clue:"You prepare the evening meal.",gap:"I'll ______ tonight.",answers:["cook dinner"]},
+{id:"havedinner",group:"Food & shopping",phrase:"to have dinner",ru:"ужинать",ex:"We usually ______ around seven.",clue:"You sit down and eat the evening meal.",gap:"We usually ______ around seven.",answers:["have dinner"]},
+{id:"drinkcoffee",group:"Food & shopping",phrase:"to drink coffee or tea",ru:"пить кофе или чай",ex:"I like to ______ on cold evenings.",clue:"Which verb means consume a cup of coffee or tea?",gap:"I like to ______ on cold evenings.",answers:["drink coffee or tea","drink coffee","drink tea"]},
+{id:"havecoffee",group:"Food & shopping",phrase:"to have coffee or tea",ru:"пить кофе или чай; выпить кофе или чай",ex:"Would you like to ______ with me?",clue:"A natural phrase when offering someone a cup of coffee or tea.",gap:"Would you like to ______ with me?",answers:["have coffee or tea","have coffee","have tea"]},
+{id:"gohome",group:"Coming home & chores",phrase:"to go home",ru:"идти / ехать домой",ex:"It's late. I think I'll ______ now.",clue:"You're at work and are leaving to head home.",gap:"It's late. I think I'll ______ now.",answers:["go home"]},
+{id:"comehome",group:"Coming home & chores",phrase:"to come home",ru:"приходить / возвращаться домой",ex:"What time will you ______?",clue:"You're at home and ask someone when they will return.",gap:"I'm waiting at home. What time will you ______?",answers:["come home"]},
+{id:"housework",group:"Coming home & chores",phrase:"to do the housework",ru:"заниматься работой по дому; делать уборку",ex:"I usually ______ on Saturdays.",clue:"You mean general cleaning and jobs around the home, not one specific task.",gap:"I usually ______ on Saturdays.",answers:["do the housework","do housework"]},
+{id:"chores",group:"Coming home & chores",phrase:"to do the chores",ru:"выполнять домашние обязанности",ex:"Everyone helps ______.",clue:"You mean the regular household tasks people are responsible for, such as taking out the trash.",gap:"Everyone in our family helps ______.",answers:["do the chores","do chores"]},
+{id:"cleartable",group:"Coming home & chores",phrase:"to clear the table",ru:"убирать со стола посуду и предметы",ex:"Could you ______ after dinner?",clue:"You remove the plates and glasses from the table.",gap:"Could you ______ after dinner?",answers:["clear the table"]},
+{id:"cleantable",group:"Coming home & chores",phrase:"to clean the table",ru:"протирать / мыть стол",ex:"There's juice on the table. I'll ______.",clue:"You wipe a dirty surface.",gap:"There's juice on the table. I'll ______ it.",answers:["clean the table"]},
+{id:"washdishes",group:"Coming home & chores",phrase:"to wash the dishes",ru:"мыть посуду",ex:"I ______ after dinner.",clue:"Focus on washing the plates and cups.",gap:"I ______ after dinner.",answers:["wash the dishes","wash dishes"]},
+{id:"dodishes",group:"Coming home & chores",phrase:"to do the dishes",ru:"заняться посудой; помыть посуду",ex:"I'll ______ while you dry them.",clue:"The usual household chore of washing the dirty dishes.",gap:"I'll ______ while you dry them.",answers:["do the dishes","do dishes"]},
+{id:"trash",group:"Coming home & chores",phrase:"to take out the trash",ru:"выносить мусор",ex:"The bin is full. Can you ______?",clue:"The bin is full, so you carry the rubbish outside.",gap:"The bin is full. Can you ______?",answers:["take out the trash","take out trash"]},
+{id:"listenmusic",group:"Free time & people",phrase:"to listen to music",ru:"слушать музыку",ex:"I like to ______ while I cook.",clue:"You put on a playlist and hear songs.",gap:"I like to ______ while I cook.",answers:["listen to music"]},
+{id:"watchseries",group:"Free time & people",phrase:"to watch a series",ru:"смотреть сериал",ex:"We sometimes ______ after dinner.",clue:"You watch episodes of a TV show.",gap:"We sometimes ______ after dinner.",answers:["watch a series","watch a TV series","watch series"]},
+{id:"notifications",group:"Free time & people",phrase:"to check notifications",ru:"проверять уведомления",ex:"I want to ______ on my phone.",clue:"You look at new alerts on your phone.",gap:"I want to ______ on my phone.",answers:["check notifications"]},
+{id:"news",group:"Free time & people",phrase:"to read the news online",ru:"читать новости в интернете",ex:"My dad likes to ______ in the morning.",clue:"You read current events on a website or app.",gap:"My dad likes to ______ in the morning.",answers:["read the news online"]},
+{id:"friends",group:"Free time & people",phrase:"to go out with friends",ru:"куда-то ходить / проводить время с друзьями",ex:"I sometimes ______ on Fridays.",clue:"You leave home to spend time socially with your friends.",gap:"I sometimes ______ on Fridays.",answers:["go out with friends"]},
+{id:"family",group:"Free time & people",phrase:"to call your family",ru:"звонить семье",ex:"I try to ______ every week.",clue:"You phone your parents or other relatives.",gap:"I try to ______ every week.",answers:["call your family"]},
+{id:"homework",group:"Free time & people",phrase:"to do homework",ru:"делать домашнее задание",ex:"She needs to ______ before dinner.",clue:"You complete school or study tasks at home.",gap:"She needs to ______ before dinner.",answers:["do homework"]},
+{id:"walkdog",group:"Family, pets & bedtime",phrase:"to walk the dog",ru:"выгуливать собаку",ex:"I ______ twice a day.",clue:"You take the dog outside for exercise and a bathroom break.",gap:"I ______ twice a day.",answers:["walk the dog"]},
+{id:"feedcat",group:"Family, pets & bedtime",phrase:"to feed the cat",ru:"кормить кота",ex:"Don't forget to ______.",clue:"The cat's bowl is empty. Give the cat some food.",gap:"Don't forget to ______.",answers:["feed the cat"]},
+{id:"feeddog",group:"Family, pets & bedtime",phrase:"to feed the dog",ru:"кормить собаку",ex:"It's time to ______.",clue:"The dog's bowl is empty. Give the dog some food.",gap:"It's time to ______.",answers:["feed the dog"]},
+{id:"feedkids",group:"Family, pets & bedtime",phrase:"to feed the kids",ru:"кормить детей",ex:"I'll ______ before we leave.",clue:"The children are hungry. Give them something to eat.",gap:"I'll ______ before we leave.",answers:["feed the kids"]},
+{id:"putkids",group:"Family, pets & bedtime",phrase:"to put the kids to bed",ru:"укладывать детей спать",ex:"They ______ at eight.",clue:"You help the children get ready for sleep and tuck them in.",gap:"They ______ at eight.",answers:["put the kids to bed","put kids to bed"]},
+{id:"gotobed",group:"Family, pets & bedtime",phrase:"to go to bed",ru:"ложиться спать",ex:"I usually ______ before eleven.",clue:"You get into bed at the end of the day.",gap:"I usually ______ before eleven.",answers:["go to bed"]},
+{id:"fallasleep",group:"Family, pets & bedtime",phrase:"to fall asleep",ru:"засыпать",ex:"I'm tired, but I can't ______.",clue:"You stop being awake and begin sleeping.",gap:"I'm tired, but I can't ______.",answers:["fall asleep"]}
+];
+const choiceClues={
+eatout:"You choose a café or restaurant instead of eating at home.",
+cutdown:"You reduce how much coffee you drink, but don't stop completely.",
+cutout:"You decide to stop eating sugar completely.",
+buygroceries:"The fridge is empty, so you go shopping for food and household basics.",
+cookdinner:"You prepare the evening meal.",
+havedinner:"You sit down and eat the evening meal.",
+drinkcoffee:"You consume a cup of coffee or tea.",
+havecoffee:"You offer someone a cup: “Would you like to ___ coffee with me?”",
+gohome:"You're at work and are leaving to head home.",
+comehome:"You're at home and ask someone when they will return.",
+housework:"You mean general cleaning and jobs around the home.",
+chores:"You mean regular household tasks people are responsible for.",
+cleartable:"You remove the plates and glasses after dinner.",
+cleantable:"You wipe a dirty surface.",
+washdishes:"You focus on washing the plates and cups.",
+dodishes:"You take care of the dishwashing as a household chore.",
+trash:"The bin is full, so you carry the rubbish outside.",
+listenmusic:"You put on a playlist and hear songs.",
+watchseries:"You watch episodes of a TV show.",
+notifications:"You look at new alerts on your phone.",
+news:"You read current events on a website or app.",
+friends:"You leave home to spend time socially with your friends.",
+family:"You phone your parents or other relatives.",
+homework:"You complete school or study tasks at home.",
+walkdog:"You take the dog outside for exercise.",
+feedcat:"The cat's bowl is empty. Give the cat some food.",
+feeddog:"The dog's bowl is empty. Give the dog some food.",
+feedkids:"The children are hungry. Give them something to eat.",
+putkids:"You help the children get ready for sleep and tuck them in.",
+gotobed:"You get into bed at the end of the day.",
+fallasleep:"You stop being awake and begin sleeping."
+};
+const groups=[...new Set(vocab.map(x=>x.group))];
+const app=document.getElementById("app");
+let view="cards", cardFilter="All groups", choiceIndex=0, choiceScore=0, choiceAnswered=false, gapIndex=0, gapScore=0, gapAnswered=false;
+let chosen=vocab[0];
+const learned=new Set(JSON.parse(localStorage.getItem("eveningTrainerLearned")||"[]"));
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function persist(){localStorage.setItem("eveningTrainerLearned",JSON.stringify([...learned]));updateProgress()}
+function updateProgress(){document.getElementById("progressText").textContent="Cards marked as recalled: "+learned.size+" / "+vocab.length;document.getElementById("progressBar").style.width=(learned.size/vocab.length*100)+"%"}
+function sentenceWithBlank(s){return esc(s).replace("______","<span style='letter-spacing:.12em;color:#8b82cf'>________</span>")}
+function showCards(){
+ const shown=cardFilter==="All groups"?groups:groups.filter(x=>x===cardFilter);
+ app.innerHTML="<div class='panelhead'><div><h2>Recall the expressions</h2><p class='lead'>Look at the Russian prompt and the English example. Say the expression before revealing it.</p></div><span class='counter'>"+vocab.length+" expressions</span></div><div class='filter' id='filters'></div><div id='cardGroups'></div>";
+ const filters=document.getElementById("filters");
+ ["All groups",...groups].forEach(g=>{const b=document.createElement("button");b.textContent=g;b.className=cardFilter===g?"active":"";b.onclick=()=>{cardFilter=g;showCards()};filters.appendChild(b)});
+ const root=document.getElementById("cardGroups");
+ shown.forEach(g=>{const items=vocab.filter(v=>v.group===g);const sec=document.createElement("section");sec.className="group";sec.innerHTML="<h3>"+esc(g)+"</h3><div class='cards'></div>";const grid=sec.querySelector(".cards");items.forEach(v=>{const card=document.createElement("article");card.className="wordcard"+(learned.has(v.id)?" revealed":"");card.innerHTML="<p class='ru'>"+esc(v.ru)+"</p><p class='example'>"+sentenceWithBlank(v.ex)+"</p><p class='answer'>"+esc(v.phrase)+"</p><div class='cardactions'><button class='smallbtn reveal'>"+(card.classList.contains("revealed")?"Hide answer":"Show answer")+"</button><button class='smallbtn recall "+(learned.has(v.id)?"done":"")+"'>"+(learned.has(v.id)?"Recalled":"I remembered it")+"</button></div>";card.querySelector(".reveal").onclick=e=>{card.classList.toggle("revealed");e.currentTarget.textContent=card.classList.contains("revealed")?"Hide answer":"Show answer"};card.querySelector(".recall").onclick=e=>{if(learned.has(v.id)){learned.delete(v.id)}else learned.add(v.id);persist();e.currentTarget.classList.toggle("done",learned.has(v.id));e.currentTarget.textContent=learned.has(v.id)?"Recalled":"I remembered it"};grid.appendChild(card)});root.appendChild(sec)});
+}
+function shuffled(a){return [...a].sort(()=>Math.random()-.5)}
+function showChoice(){
+ const v=vocab[choiceIndex];
+ const same=vocab.filter(x=>x.group===v.group&&x.id!==v.id);
+ let distractors=shuffled(same).slice(0,3);
+ if(distractors.length<3)distractors=shuffled(vocab.filter(x=>x.id!==v.id)).slice(0,3);
+ const opts=shuffled([v,...distractors]);
+ app.innerHTML="<div class='panelhead'><div><h2>Choose the expression</h2><p class='lead'>Read the situation and choose the expression that fits best.</p></div><span class='counter'>Question "+(choiceIndex+1)+" / "+vocab.length+" · Score "+choiceScore+"</span></div><div class='context'>"+esc(choiceClues[v.id])+"</div><div class='options'></div><div class='feedback' id='choiceFeedback' aria-live='polite'></div><div class='actions'><button class='primary' id='choiceNext' disabled>"+(choiceIndex===vocab.length-1?"See result":"Next")+"</button><button class='secondary' id='choiceRestart'>Restart</button></div>";
+ const box=app.querySelector(".options");
+ opts.forEach(o=>{const b=document.createElement("button");b.className="option";b.textContent=o.phrase;b.onclick=()=>{if(choiceAnswered)return;choiceAnswered=true;const ok=o.id===v.id;if(ok)choiceScore++;b.classList.add(ok?"correct":"wrong");opts.forEach(x=>{if(x.id===v.id)box.querySelectorAll(".option").forEach(btn=>{if(btn.textContent===x.phrase)btn.classList.add("correct")})});const fb=document.getElementById("choiceFeedback");fb.className="feedback "+(ok?"good":"bad");fb.textContent=ok?"Correct. "+v.phrase+" – "+v.ru:"Not quite. The best answer is "+v.phrase+" – "+v.ru;document.getElementById("choiceNext").disabled=false};box.appendChild(b)});
+ document.getElementById("choiceNext").onclick=()=>{if(choiceIndex===vocab.length-1){app.innerHTML="<div class='endcard'><h2>Choice practice complete</h2><p>You got <strong>"+choiceScore+" / "+vocab.length+"</strong> correct.</p><button class='primary' id='choiceAgain'>Try again</button></div>";document.getElementById("choiceAgain").onclick=()=>{choiceIndex=0;choiceScore=0;choiceAnswered=false;showChoice()};return}choiceIndex++;choiceAnswered=false;showChoice()};
+ document.getElementById("choiceRestart").onclick=()=>{choiceIndex=0;choiceScore=0;choiceAnswered=false;showChoice()};
+}
+function normalize(s){return s.toLowerCase().trim().replace(/[.!?,;:]/g,"").replace(/\s+/g,"").replace(/’/g,"'")}
+function showGaps(){
+ const v=vocab[gapIndex];
+ app.innerHTML="<div class='panelhead'><div><h2>Complete the sentence</h2><p class='lead'>Type the missing expression. Each phrase from the list appears in this round.</p></div><span class='counter'>Question "+(gapIndex+1)+" / "+vocab.length+" · Score "+gapScore+"</span></div><div class='context'>"+sentenceWithBlank(v.gap)+"</div><div class='inputrow'><input id='gapInput' autocomplete='off' aria-label='Type the missing expression' placeholder='Type the expression'><button class='primary' id='gapCheck'>Check</button></div><div class='feedback' id='gapFeedback' aria-live='polite'></div><div class='actions'><button class='primary' id='gapNext' disabled>"+(gapIndex===vocab.length-1?"See result":"Next")+"</button><button class='secondary' id='gapRestart'>Restart</button></div>";
+ const input=document.getElementById("gapInput"),check=document.getElementById("gapCheck"),feedback=document.getElementById("gapFeedback"),next=document.getElementById("gapNext");
+ function test(){if(gapAnswered)return;const answer=normalize(input.value);if(!answer){feedback.textContent="Type an expression first.";return}gapAnswered=true;const ok=v.answers.some(a=>normalize(a)===answer);if(ok)gapScore++;feedback.className="feedback "+(ok?"good":"bad");feedback.textContent=ok?"Correct. "+v.phrase+" – "+v.ru:"The answer is "+v.phrase+". "+v.ru;next.disabled=false;check.disabled=true;input.disabled=true}
+ check.onclick=test;input.onkeydown=e=>{if(e.key==="Enter")test()};
+ next.onclick=()=>{if(gapIndex===vocab.length-1){app.innerHTML="<div class='endcard'><h2>Gap practice complete</h2><p>You got <strong>"+gapScore+" / "+vocab.length+"</strong> correct.</p><button class='primary' id='gapAgain'>Try again</button></div>";document.getElementById("gapAgain").onclick=()=>{gapIndex=0;gapScore=0;gapAnswered=false;showGaps()};return}gapIndex++;gapAnswered=false;showGaps()};
+ document.getElementById("gapRestart").onclick=()=>{gapIndex=0;gapScore=0;gapAnswered=false;showGaps()};
+}
+const repairs=[
+{sentence:"I want to stop eating sugar completely, so I’m going to cut down on sugar.",wrong:"cut down on",answer:"cut out",explain:"Use cut out when you stop completely."},
+{sentence:"The plates are still on the table. I’ll clean the table.",wrong:"clean the table",answer:"clear the table",explain:"Clear the table means remove the dishes and other things."},
+{sentence:"There’s sauce on the table. I’ll clear the table.",wrong:"clear the table",answer:"clean the table",explain:"Clean the table means wipe the surface."},
+{sentence:"I went to bed at ten, but I didn’t go to bed until midnight.",wrong:"go to bed (second time)",answer:"fall asleep",explain:"Go to bed is getting into bed; fall asleep is beginning to sleep."},
+{sentence:"I’m at home. What time will you go home?",wrong:"go home",answer:"come home",explain:"From the speaker’s point of view at home, ask when someone will come home."},
+{sentence:"I don’t want to reduce coffee slowly. I want to cut down on it completely.",wrong:"cut down on",answer:"cut out",explain:"Cut out means stop completely."},
+{sentence:"The bin is full. I need to clear the trash.",wrong:"clear the trash",answer:"take out the trash",explain:"Take out the trash is the usual expression."},
+{sentence:"I want to reduce the amount of coffee I drink, so I’ll cut it out a little.",wrong:"cut it out a little",answer:"cut down on it",explain:"Cut down on means reduce the amount."}
+];
+let repairScore=0;
+function showRepair(){app.innerHTML="<div class='panelhead'><div><h2>Fix the phrase</h2><p class='lead'>Replace the incorrect expression. Focus on the meaning, not spelling or punctuation.</p></div><span class='counter'>"+repairs.length+" sentences</span></div><div class='cards' id='repairCards'></div><div class='feedback' id='repairResult'></div><button class='primary' id='checkRepairs'>Check answers</button>";const root=document.getElementById("repairCards");repairs.forEach((r,i)=>{const el=document.createElement("div");el.className="wordcard";el.innerHTML="<p class='example'>"+esc(r.sentence)+"</p><label class='counter' for='rep"+i+"'>Replace: <strong>"+esc(r.wrong)+"</strong></label><div class='inputrow'><input id='rep"+i+"' data-answer='"+esc(r.answer)+"' placeholder='Type the correct expression'></div><p class='feedback hidden' id='rf"+i+"'></p>";root.appendChild(el)});document.getElementById("checkRepairs").onclick=()=>{repairScore=0;repairs.forEach((r,i)=>{const input=document.getElementById("rep"+i),fb=document.getElementById("rf"+i),ok=normalize(input.value)===normalize(r.answer);if(ok)repairScore++;fb.classList.remove("hidden");fb.className="feedback "+(ok?"good":"bad");fb.textContent=ok?"Correct. "+r.explain:"Suggested correction: "+r.answer+". "+r.explain});document.getElementById("repairResult").className="feedback";document.getElementById("repairResult").textContent="Score: "+repairScore+" / "+repairs.length;}}
+const speakingPrompts=[
+"Describe what you usually do when you come home after work.",
+"Talk about how you handle dinner, groceries, and the dishes.",
+"Describe what you do to relax in the evening.",
+"Talk about the household chores you do during the week.",
+"Describe your usual routine before you go to bed.",
+"Talk about how often you spend time with friends or call your family."
+];
+let currentPrompt="";
+function showSpeaking(){currentPrompt=currentPrompt||speakingPrompts[0];app.innerHTML="<div class='panelhead'><div><h2>Talk about your evening</h2><p class='lead'>Choose a prompt and answer aloud. Try to use at least three expressions from the list.</p></div></div><div class='endcard'><p class='eyebrow'>Speaking prompt</p><div class='question' id='speakPrompt'>"+esc(currentPrompt)+"</div><button class='secondary' id='newPrompt'>Another prompt</button></div><h3 style='margin:22px 0 8px;font-size:15px'>Optional phrase bank</h3><div class='bank'>"+vocab.map(v=>"<span class='chip'>"+esc(v.phrase)+"</span>").join("")+"</div><p class='note'>After speaking, check: Did I use three or more expressions? Did I distinguish <strong>go to bed</strong> from <strong>fall asleep</strong> and <strong>cut down on</strong> from <strong>cut out</strong>?</p>";document.getElementById("newPrompt").onclick=()=>{let next=shuffled(speakingPrompts).find(x=>x!==currentPrompt)||speakingPrompts[0];currentPrompt=next;showSpeaking()}}
+function render(){updateProgress();if(view==="cards")showCards();if(view==="choice")showChoice();if(view==="gaps")showGaps();if(view==="repair")showRepair();if(view==="speak")showSpeaking()}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("active"));b.classList.add("active");view=b.dataset.view;render()});
+document.getElementById("resetProgress").onclick=()=>{learned.clear();persist();if(view==="cards")showCards()};
+render();
+</script>
+</body>
+</html>
