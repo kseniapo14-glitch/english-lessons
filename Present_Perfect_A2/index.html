@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Present Perfect Practice · A2</title>
+<style>
+:root{color-scheme:light;--ink:#282641;--muted:#56546a;--purple:#514487;--line:#e3def0;--paper:#fff;--lav:#f0ebfa;--mint:#e8f4ed;--peach:#fff0e8}
+*{box-sizing:border-box}body{margin:0;background:#f8f6fb;color:var(--ink);font:16px/1.55 system-ui,sans-serif}header{background:linear-gradient(110deg,#eee7fa,#f8eced 68%,#e8f3ed);border-bottom:1px solid var(--line)}.wrap{width:min(100% - 32px,980px);margin:auto}.hero{padding:36px 0 23px}.meta{color:var(--muted);margin:0}h1{font:600 clamp(2.15rem,6vw,4rem)/1.03 Georgia,serif;letter-spacing:-.04em;margin:.2em 0 .24em}h2{font:600 clamp(1.55rem,4vw,2.35rem)/1.2 Georgia,serif;margin:0 0 12px}h3{margin:20px 0 8px}.progressline{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;margin-top:20px}progress{display:block;width:100%;height:10px;accent-color:var(--purple);margin:6px 0 18px}nav,.actions,.choices,.tiles{display:flex;gap:8px;flex-wrap:wrap}button,select,input{font:inherit}button{cursor:pointer;border:1px solid var(--line);border-radius:9px;background:var(--paper);color:var(--ink);padding:8px 13px}button:hover{border-color:var(--purple)}button:disabled{cursor:default;opacity:.5}button[aria-current],button[aria-pressed=true],.primary{background:var(--purple);border-color:var(--purple);color:white}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,h2:focus-visible{outline:2px solid #6755a4;outline-offset:3px}main{padding:27px 0}.card,.rules,.subcard{border:1px solid var(--line);border-radius:16px;background:var(--paper);padding:clamp(15px,3vw,25px);margin:0 0 12px}.rules{background:var(--lav)}.question{margin:0 0 12px;white-space:pre-line}.feedback{margin:10px 0 0;border-radius:8px;padding:8px 12px;background:var(--mint)}.feedback.retry{background:var(--peach)}.small{font-size:.91rem;color:var(--muted)}input[type=text]{display:block;width:100%;border:1px solid #a59bb9;border-radius:8px;padding:10px 12px;margin-bottom:10px}.built{min-height:52px;padding:8px;border:1px dashed #a59bb9;border-radius:8px;margin-bottom:9px}.bottom{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:0 0 26px}details{margin:10px 0}summary{cursor:pointer;color:var(--purple);font-weight:650}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.grid .card{margin:0}.photo[hidden]{display:none}.photo{display:block;width:100%;height:170px;object-fit:cover;border-radius:10px;margin-bottom:12px;background:var(--lav)}table{border-collapse:collapse;width:100%;margin:12px 0}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line)}.scroll{overflow-x:auto}.passage{background:var(--lav);border-radius:12px;padding:16px 20px;white-space:pre-line}.passage label{display:inline-flex;align-items:center;gap:4px;margin:3px;white-space:normal}.passage select{max-width:100%;border:1px solid #a59bb9;border-radius:7px;background:white;padding:4px}.status{min-height:1.5em;margin-top:8px}.context{margin-top:0;color:var(--muted)}@media(max-width:600px){.grid{grid-template-columns:1fr}.hero{padding-top:25px}nav{gap:5px}nav button{padding:6px 9px}}
+</style>
+</head>
+<body>
+<header><div class="wrap hero">
+<p class="meta">A2 · Essential Grammar in Use · Units 16–18</p>
+<h1 lang="en">Present Perfect Practice</h1>
+<p class="meta">13 заданий · 3 разговорные практики · около 50 минут</p>
+<div class="progressline"><span id="progressLabel"></span><span id="taskLabel"></span></div>
+<progress id="progress" max="13" value="0" aria-label="Прогресс по заданиям"></progress>
+<nav id="nav" aria-label="Задания"></nav>
+</div></header>
+<main class="wrap" id="main"></main>
+<footer class="wrap bottom"><div class="actions"><button id="back">Назад</button><button id="next" class="primary">Дальше</button></div><button id="reset">Reset progress</button></footer>
+<script>
+"use strict";
+const source = {"result":[["The window is broken. There is glass on the floor.","Someone has broken the window."],["Tom can't find his keys.","He's lost his keys."],["The kitchen is clean now.","She's cleaned the kitchen."],["Nobody is at home.","They've gone out."],["There's a new car outside their house.","They've bought a new car."],["The homework is ready.","He's finished his homework."],["Her phone doesn't work after she dropped it.","She's broken her phone."],["The guests aren't hungry anymore. Their plates are empty.","They've had dinner."]],"v3":[["I've ___ my keys.","lose / lost / losing","lost"],["She's ___ the window.","broke / broken / break","broken"],["They've ___ home.","went / gone / go","gone"],["Have you ___ this film?","saw / seen / see","seen"],["He's ___ his homework.","did / done / doing","done"],["We've ___ a new sofa.","bought / buyed / buying","bought"],["She's ___ asleep.","fell / fallen / fall","fallen"],["I've ___ breakfast.","had / have / having","had"],["He's ___ his phone.","forgot / forgotten / forget","forgotten"],["They've ___ a lot of photos.","took / taken / take","taken"],["I've ___ an email to my boss.","wrote / written / write","written"],["She's ___ a beautiful dress.","wore / worn / wear","worn"],["We've ___ all the chocolate.","ate / eaten / eat","eaten"],["He's ___ his wallet.","found / find / founded","found"],["Have you ___ this book?","read / reading / reads","read"],["They've ___ a new house.","built / build / builded","built"],["I've ___ a mistake.","made / make / maked","made"],["She's ___ her leg.","hurted / hurt / hurting","hurt"],["We've ___ a lot of money.","spent / spend / spended","spent"],["He's ___ the wrong train.","chose / chosen / choose","chosen"]],"order":[["`she / has / finished / her work`","She has finished her work."],["`they / have / bought / a new house`","They have bought a new house."],["`I / haven't / seen / this film`","I haven't seen this film."],["`has / he / lost / his passport / ?`","Has he lost his passport?"],["`you / have / done / your homework / ?`","Have you done your homework?"],["`we / haven't / cleaned / the kitchen`","We haven't cleaned the kitchen."]],"adverbs":[["We're still waiting. Tom hasn't arrived ___.","yet"],["It's only 7 a.m., but Anna has ___ finished her work.","already"],["The plane landed a minute ago. They've ___ arrived.","just"],["Have you finished your homework ___?","yet"],["Don't buy milk. I've ___ bought some.","already"],["I finished lunch a minute ago. I've ___ eaten.","just"],["The film hasn't started ___.","yet"],["It's only 9 p.m., but he's ___ gone to bed.","already"],["I've finished the report. (already)","I've already finished the report."],["Has she arrived? (yet)","Has she arrived yet?"],["They've left the office. (just)","They've just left the office."],["We haven't bought the tickets. (yet)","We haven't bought the tickets yet."],["He's had dinner. (already)","He's already had dinner."]],"translation":[["Я потеряла ключи.","I've lost my keys."],["Она уже закончила работу.","She's already finished her work."],["Мы ещё не купили билеты.","We haven't bought the tickets yet."],["Ты уже прочитал это сообщение?","Have you read this message yet?"],["Он только что ушёл домой.","He's just gone home."],["Они разбили окно.","They've broken the window."],["Я ещё не сделала домашнее задание.","I haven't done my homework yet."],["Она уже поужинала.","She's already had dinner."]],"exp":[["Have you ___ been to Japan?","ever"],["I've ___ travelled by plane.","never"],["Has Tom ___ played golf?","ever"],["She's ___ ridden a horse.","never"],["Have they ___ visited Canada?","ever"],["He's ___ eaten sushi.","never"],["you / ever / be / to Italy","Have you ever been to Italy?"],["she / ever / ride / a horse","Has she ever ridden a horse?"],["they / ever / play / golf","Have they ever played golf?"],["he / ever / see / this film","Has he ever seen this film?"],["Have you ever been to Rome? – No, I ___.","haven't"],["Has she ever played golf? – Yes, she ___.","has"],["I've ___ ridden a horse.","never"],["Have they ever travelled by plane? – Yes, they ___.","have"]],"been":[["Tom is in Spain now. He's ___ to Spain.","gone"],["Anna visited Paris and came home. She's ___ to Paris.","been"],["Where's Kate? She's ___ to the supermarket.","gone"],["I've ___ to Italy three times.","been"],["Jack isn't here. He's ___ home.","gone"],["My parents have ___ to Greece. They loved it.","been"],["Where have you ___? I've been looking for you!","been"],["Lisa isn't in the office. She's ___ out.","gone"]],"mixedTranslation":[["Ты когда-нибудь был в Италии?\\","Have you ever been to Italy?"],["Я никогда не ездила верхом.\\","I've never ridden a horse."],["Они только что приехали.\\","They've just arrived."],["Она уже видела этот фильм?\\","Has she seen this film yet?"],["Мы никогда не играли в гольф.\\","We've never played golf."],["Где Том? Он ушёл в магазин.\\","Where's Tom? He's gone to the shop."],["Я уже закончила работу.\\","I've already finished my work."],["Ты когда-нибудь летал на самолёте?\\","Have you ever travelled by plane?"],["Она была во Франции, но никогда не была в Канаде.\\","She's been to France, but she's never been to Canada."],["Они ещё не приехали?\\","Haven't they arrived yet?"]],"photos":["https://images.openai.com/static-rsc-4/vy0LWYk3q6JcElOuDh-tigOw66Wd1BdkN2YSuy5UhFl__gCdz_f-bKg2DMwWzxyhymcnHMSyRr5Ygz0zs-eaR81N2mSalSHf4ALu29wnsJdzIvfUjUuRMiF30BWD83gp8BD20qrgB1jUzNuQj_s1SL8-P7C1lv_jgy-f2ch_Fuw?purpose=inline","https://images.openai.com/static-rsc-4/JQmDpCOaCe2HxGqY1WxIGrw-OHyz0k_x_tagga20TnvxXYWJ6LE1qenyYjJT0XTNVvOB5LBsIWs35UxRbSWGDwKULWyXAMZvm006lkcIczDT_ndMTQ3wAqXd0ps8erkJB0aa1SEh2gA7qlz1wYgz1Ym9M2zRnk29RL-Hf9kTv7aS-9ztWYdVjzKeOMB_bVvO?purpose=inline","https://images.openai.com/static-rsc-4/QunOSzrhHD8tVlF03iFEqKKc6PvxABmqKuLCHo-t8sfNzpIXmLdCPekDXi3WTH-tmwHirWNFURw4wT_bhufupXFhk6WixB6nDQzfSon9LcyFr97YR3YMy4t0Be7-eGzQ1NHYoa9gTEsuNrqMNk6nJ14HhhBqnmKbsP-42GEDWZNKkCcTJS37f79poUqQeyDu?purpose=inline","https://images.openai.com/static-rsc-4/IAPZTvMpgtin-MYZRC0--0O_caDTmqsjfYQBhkg2rG5eVrWPFYqQsKLYhXmGkzp_7anLAGQ1XHzdOuZ06GK_IIg8fGuqQvfb4v6zsV9Ck6bq3Icg0kDB4qMxApskZ6BI_S0IHNsjexfFy-KD4ko8Tyie5bS1X3jMnv4vu2nurjY?purpose=inline"]};
+const titles = ["What has happened?", "What's the problem?", "Build the sentence", "Just, already or yet?", "Translate into English", "Airport Checklist", "Ever / never", "Been or gone?", "Find the person", "Mixed practice", "Translation challenge", "Review mistakes", "Final Quiz"];
+const directions = [
+  "Прочитай ситуацию и выбери, что произошло.", "Посмотри на фото и скажи, что случилось. Используй Present Perfect.",
+  "Собери предложения из блоков, затем выбери третью форму глагола.", "Вставь нужное слово и потренируй его место в предложении.",
+  "Переведи на английский. Используй Present Perfect.", "Задай вопросы по списку и ответь по статусам. Затем поменяйтесь ролями.",
+  "Задай вопросы об опыте и потренируй короткие ответы.", "Выбери been или gone по ситуации.",
+  "Задавай вопросы Have you ever…? и угадай персонажа.", "Прочитай историю и заполни пропуски.",
+  "Переведи на английский. Используй Present Perfect.", "Попробуй ещё раз ответить на вопросы, в которых были ошибки.",
+  "Ответь на 10 вопросов и проверь результат."
+];
+const rules = {
+  0:"Present Perfect показывает действие в прошлом, результат которого важен сейчас.",
+  2:"Утверждение: подлежащее + have/has + V3. Отрицание: haven’t/hasn’t + V3. Вопрос: Have/Has + подлежащее + V3?",
+  3:"just – только что · already – уже. Обычно они стоят после have/has. Yet – уже? / ещё не. Обычно ставим его в конце вопроса или отрицания.",
+  6:"Ever – когда-нибудь (обычно в вопросах об опыте). Never – никогда. С never используем have/has без дополнительного отрицания.",
+  7:"Been to – побывал(а) там и вернулся(-ась). Gone to – ушёл или уехал и ещё не вернулся."
+};
+const tasks = Array.from({length:13},()=>[]);
+function add(task,unit,prompt,answer,options,explanation,extra={}) {
+  tasks[task].push({id:task+"-"+tasks[task].length,unit,prompt,answer,options,explanation,...extra});
+}
+const distractors = [
+  ["Someone has cleaned the window.","Someone has opened the window."],
+  ["He's found his keys.","He's put his keys in the lock."],
+  ["She's dropped a glass.","She's made a mess in the kitchen."],
+  ["They've invited friends over.","They've come home."],
+  ["They've sold their only car.","They've parked their car at work."],
+  ["He's lost his homework.","He's left his homework at school."],
+  ["She's repaired her phone.","She's charged her phone."],
+  ["They've ordered dinner.","They've left without eating."]
+];
+const resultNotes=["Разбитое стекло на полу – результат того, что кто-то разбил окно.","Ключей сейчас нет – Том их потерял.","Кухня сейчас чистая – её убрали.","Дома никого нет – все ушли.","Новая машина у дома – её купили.","Домашнее задание готово – его закончили.","Телефон после падения не работает – она его сломала.","Тарелки пустые, гости сыты – они поужинали."];
+source.result[4][0]="There's a new car outside their house. It's theirs.";
+source.result[7][0]="The guests aren't hungry anymore. They've finished all the food on their dinner plates.";
+source.result.forEach(([p,a],i)=>add(0,16,p,a,[a,...distractors[i]],resultNotes[i]));
+const forms=["lose – lost – lost","break – broke – broken","go – went – gone","see – saw – seen","do – did – done","buy – bought – bought","fall – fell – fallen","have – had – had","forget – forgot – forgotten","take – took – taken","write – wrote – written","wear – wore – worn","eat – ate – eaten","find – found – found","read /riːd/ – read /red/ – read /red/","build – built – built","make – made – made","hurt – hurt – hurt","spend – spent – spent","choose – chose – chosen"];
+source.order.forEach(([p,a])=>add(2,16,"Собери предложение.",a,null,rules[2],{tiles:p.replaceAll("`","").split(" / ")}));
+source.v3.forEach(([p,o,a],i)=>add(2,16,p,a,o.split(" / "),"После have/has нужна третья форма: "+forms[i]+"."));
+const advNote={just:"Just показывает, что действие произошло совсем недавно. Ставим после have/has.",already:"Already показывает, что действие уже произошло. Обычно ставим после have/has.",yet:"Yet обычно стоит в конце вопроса или отрицания."};
+source.adverbs.forEach(([p,a],i)=>{
+  if(i===4) p="Замени «уже»: Don't buy milk. I've ___ bought some.";
+  add(3,17,p,a,i<8?["just","already","yet"]:null,advNote[i<8?a:p.match(/\((\w+)\)$/)[1]]);
+});
+const translateNotes=[
+  "Результат сейчас. После have/has используй V3.",
+  "Already обычно ставим после have/has. Его также можно поставить в конце.",
+  "В отрицании используй haven’t + V3, а yet поставь в конце.",
+  "В вопросе сначала Have, затем подлежащее и V3. Yet ставим в конце.",
+  "Just ставим после has. Третья форма go – gone.",
+  "Результат сейчас. Третья форма break – broken.",
+  "В отрицании используй haven’t + V3. Третья форма do – done.",
+  "Already показывает, что она уже поужинала. Третья форма have – had."
+];
+source.translation.forEach(([p,a],i)=>add(4,i===0||i===5?16:17,p,a,null,translateNotes[i],{translation:true}));
+const expPrompts=["Ты когда-нибудь был(а) в Японии?","Я никогда не летал(а) на самолёте.","Том когда-нибудь играл в гольф?","Она никогда не ездила верхом.","Они когда-нибудь были в Канаде?","Он никогда не ел суши."];
+source.exp.forEach(([p,a],i)=>{
+  const choices=i<6||i===12?["ever","never"]:i<10?null:["have","has","haven't","hasn't"];
+  if(i<6) p=p+"\n"+expPrompts[i];
+  if(i===12) p=p+"\nЯ никогда не ездил(а) верхом.";
+  add(6,18,p,a,choices,i<10||i===12?rules[6]:"В коротком ответе повтори вспомогательный глагол из вопроса: have/has или haven’t/hasn’t.");
+});
+source.been.forEach(([p,a],i)=>add(7,18,p,a,["been","gone"],i===6?"Where have you been? – Где ты был(а)? Человек уже здесь.":rules[7]));
+const story = "It's Monday morning. Kate is at work, but Tom isn't here. He's [1] to a meeting.\n\nKate finished her report a minute ago. She's [2] finished it, but she hasn't sent it to her manager [3].\n\nHer friend Lisa has had many different jobs, but she's [4] worked in an office.\n\nKate’s manager calls. “Have you [5] my email yet?”\n“No, I haven't. Have you spoken to the client [6]?”\n“Yes, I've [7] spoken to him. In fact, we talked first thing this morning.”\n\nLater, Tom comes back. “Where have you [8]?” Kate asks.\n“I've [9] to a meeting with the director. Have you [10] the report?”\n“Yes, I've finished it, but I haven't sent it [11].”";
+const gaps=[
+  [18,"gone",["been","gone","went"],rules[7]],
+  [17,"just",["yet","never","just"],advNote.just],
+  [17,"yet",["already","yet","ever"],advNote.yet],
+  [18,"never",["ever","never","yet"],rules[6]],
+  [16,"read",["reading","read","reads"],"Третья форма read пишется так же и произносится /red/."],
+  [17,"yet",["just","already","yet"],advNote.yet],
+  [17,"already",["already","yet","ever"],advNote.already],
+  [18,"been",["gone","went","been"],"Том вернулся. Where have you been? – Где ты был?"],
+  [18,"been",["went","been","gone"],rules[7]],
+  [16,"finished",["finish","finishing","finished"],"После have нужна третья форма: finish – finished – finished."],
+  [17,"yet",["already","yet","never"],advNote.yet]
+];
+const gapContexts = ["Tom isn't here. He's ___ to a meeting.","Kate finished her report a minute ago. She's ___ finished it.","She hasn't sent it to her manager ___.","She's ___ worked in an office. (Она никогда не работала в офисе.)","Have you ___ my email yet?","Have you spoken to the client ___?","Yes, I've ___ spoken to him. We talked first thing this morning.","Tom comes back. “Where have you ___?” Kate asks.","Tom is back. “I've ___ to a meeting with the director.”","Have you ___ the report?","I've finished it, but I haven't sent it ___."];
+gaps.forEach(([u,a,o,e],i)=>add(9,u,gapContexts[i],a,o,e));
+source.mixedTranslation.forEach(([p,a],i)=>{
+  const unit=[2,3,6,9].includes(i)?17:18;
+  add(10,unit,p.replace(/\\$/,""),a,null,unit===17?(i===2?advNote.just:i===6?advNote.already:advNote.yet):i===5?rules[7]:rules[6],{translation:true});
+});
+const finalQuiz=[
+  [16,"Which sentence is correct?","She has finished her work.",["She have finished her work.","She has finish her work."],rules[2]],
+  [16,"Which sentence describes a result now?","I've lost my passport. I can't find it.",["I lose my passport every year.","I'm looking for my passport."],rules[0]],
+  [16,"He's ___ his phone.","broken",["broke","break"],"После has нужна V3: "+forms[1]+"."],
+  [17,"The train arrived a minute ago. It's ___ arrived.","just",["yet","never"],advNote.just],
+  [17,"It's only 6 a.m., but she's ___ finished her work.","already",["yet","never"],advNote.already],
+  [17,"We haven't bought the tickets ___.","yet",["just","never"],advNote.yet],
+  [18,"___ you ever been to Canada?","Have",["Has","Do"],"В вопросе с you используем Have you + V3?"],
+  [18,"I've ___ ridden a horse. (Я никогда не ездила верхом.)","never",["ever","yet"],rules[6]],
+  [18,"Anna is in Italy now. She's ___ to Italy.","gone",["been","went"],rules[7]],
+  [18,"Tom visited Japan and returned home. He's ___ to Japan.","been",["gone","go"],rules[7]]
+];
+finalQuiz.forEach(([u,p,a,o,e])=>add(12,u,p,a,[a,...o],e));
+
+const $=id=>document.getElementById(id);
+const key="pp-a2-16-18-v1";
+function initial(){return {task:0,entries:{},spoken:{},reviewDone:false,quizChecked:false}}
+let state=initial();
+try{
+  const saved=JSON.parse(localStorage.getItem(key));
+  if(saved?.entries && saved?.spoken && titles[saved.task]) state=saved;
+}catch{}
+function save(){try{localStorage.setItem(key,JSON.stringify(state))}catch{}}
+function entry(q){return state.entries[q.id]??={value:"",status:"",missed:false}}
+function normalize(text){
+  return text.toLowerCase().replace(/[’‘]/g,"'").replace(/\b(haven|hasn)'t\b/g,(_,v)=>v.slice(0,-1)+" not")
+    .replace(/\b(i|you|we|they|who)'ve\b/g,"$1 have").replace(/\b(he|she|it|someone|who)'s\b/g,"$1 has")
+    .replace(/\bwhere's\b/g,"where is").replace(/\btraveled\b/g,"travelled")
+    .replace(/[“”".,!?:;]/g," ").trim().replace(/\s+/g," ");
+}
+function canonical(value,q){
+  let out=normalize(value);
+  if(q.translation||q.answer.includes("already")){
+    // Affirmative already can follow the auxiliary or the rest of the clause.
+    out=out.replace(/^(i have|she has) already (.+)$/,"$1 $2 already");
+  }
+  if(q.translation){
+    out=out.replace(/\bthis (movie|film)\b/g,"this film").replace(/\bthe (store|shop)\b/g,"the shop")
+      .replace(/\b(taken|flown) a plane\b/g,"travelled by plane");
+  }
+  return out;
+}
+const alternatives={
+  "4-1":["She has already finished work."],
+  "4-3":["Have you read this message already?","Have you already read this message?"],
+  "4-7":["She has already eaten dinner."],
+  "10-1":["I have never been on a horse."],
+  "10-3":["Has she already seen this movie?","Has she seen this movie already?"],
+  "10-5":["Where is Tom? He has gone to the store."],
+  "10-6":["I have already finished the work."],
+  "10-7":["Have you ever flown?","Have you ever flown by plane?","Have you ever been on a plane?"],
+  "10-8":["She has been to France but has never been to Canada."],
+  "10-9":["Have they not arrived yet?"]
+};
+function matches(value,q){
+  return [q.answer,...(alternatives[q.id]??[])].some(a=>canonical(value,q)===canonical(a,q));
+}
+function node(tag,txt,attr={}){
+  const e=document.createElement(tag);
+  if(txt!==undefined)e.textContent=txt;
+  for(const [k,v] of Object.entries(attr))e.setAttribute(k,v);
+  return e;
+}
+function button(txt,fn,attr={}){
+  const b=node("button",txt,{type:"button",...attr});
+  b.addEventListener("click",fn);
+  return b;
+}
+function shuffled(items,seed){
+  const copy=[...items];
+  for(let i=copy.length-1;i>0;i--){
+    seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+    const j=seed%(i+1);
+    [copy[i],copy[j]]=[copy[j],copy[i]];
+  }
+  return copy;
+}
+function seedFor(q){
+  return q.id.split("-").reduce((sum,n)=>sum*173+Number(n)+13,0);
+}
+let reviewOrder=[];
+function buildProgress(){
+  const completed=tasks.filter((items,i)=>{
+    if([1,5,8].includes(i))return state.spoken[i];
+    if(i===11)return state.reviewDone && !tasks.flat().some(q=>entry(q).missed);
+    return items.length && items.every(q=>["correct","accepted","incorrect","uncertain"].includes(entry(q).status));
+  }).length;
+  $("progress").value=completed;
+  $("progressLabel").textContent="Завершено "+completed+" из 13 заданий";
+  $("taskLabel").textContent="Task "+(state.task+1)+" / 13";
+}
+function check(q){
+  const e=entry(q);
+  if(!e.value.trim())return false;
+  const ok=matches(e.value,q);
+  e.status=ok?"correct":q.translation?"uncertain":"incorrect";
+  e.missed=!ok;
+  if(!ok)state.reviewDone=false;
+  save();
+  buildProgress();
+  return true;
+}
+function feedback(q){
+  const e=entry(q);
+  if(!e.status)return "";
+  if(e.status==="correct"||e.status==="accepted")return "Верно. "+q.explanation;
+  if(e.status==="uncertain")return "Ответ отличается от образца. Сверь его с преподавателем. Образец: "+q.answer+" "+q.explanation;
+  return (e.status==="shown"?"Образец: ":"Попробуй ещё раз. Ответ: ")+q.answer+" "+q.explanation;
+}
+function renderQuestion(parent,q,opts={}){
+  const e=entry(q);
+  const card=node("section",undefined,{class:"card"});
+  card.append(node("p",q.prompt,{class:"question",id:"prompt-"+q.id}));
+  if(q.tiles)card.append(node("p","Нажимай на блоки в нужном порядке.",{class:"small"}));
+  const controls=node("div",undefined,{class:q.options?"choices":"editor"});
+  const actions=node("div",undefined,{class:"actions"});
+  const note=node("p",undefined,{class:"feedback",role:"status"});
+  const hint=node("p",undefined,{class:"small"});
+  let built=e.tiles??[];
+  function updateNote(){
+    note.textContent=feedback(q);
+    note.hidden=!note.textContent;
+    note.classList.toggle("retry",!["correct","accepted"].includes(e.status));
+    if(accept)accept.hidden=e.status!=="uncertain";
+    if(mark)mark.hidden=e.status!=="uncertain";
+  }
+  function edit(value){
+    e.value=value;
+    e.status="";
+    if(opts.quiz)state.quizChecked=false;
+    save();
+    updateNote();
+    buildProgress();
+  }
+  function verify(){
+    if(!check(q)){
+      note.textContent="Введи или выбери ответ.";
+      note.hidden=false;
+      note.classList.add("retry");
+      return;
+    }
+    hint.hidden=true;
+    updateNote();
+  }
+  if(q.options){
+    for(const choice of shuffled(q.options,seedFor(q))){
+      controls.append(button(choice,()=>{
+        edit(choice);
+        for(const b of controls.children)b.setAttribute("aria-pressed",String(b.textContent===choice));
+        if(!opts.quiz)verify();
+      },{"aria-pressed":String(e.value===choice),lang:"en"}));
+    }
+  }else if(q.tiles){
+    const keys=shuffled(q.tiles.map((_,i)=>i),seedFor(q));
+    const line=node("div",undefined,{class:"tiles built","aria-label":"Собранное предложение"});
+    const bank=node("div",undefined,{class:"tiles","aria-label":"Доступные блоки"});
+    function refreshTiles(){
+      line.replaceChildren(...built.map((idx,i)=>button(q.tiles[idx],()=>{
+        built.splice(i,1);
+        changeTiles();
+      })));
+      bank.replaceChildren(...keys.map(idx=>{
+        const b=button(q.tiles[idx],()=>{built.push(idx);changeTiles()});
+        b.disabled=built.includes(idx);
+        return b;
+      }));
+    }
+    function changeTiles(){
+      e.tiles=built;
+      edit(built.map(i=>q.tiles[i]).join(" ").replace(" ?","?"));
+      refreshTiles();
+      const available=bank.querySelector("button:not(:disabled)");
+      (available??line.firstElementChild)?.focus();
+    }
+    refreshTiles();
+    controls.append(line,bank);
+  }else{
+    const field=node("input",undefined,{type:"text","aria-labelledby":"prompt-"+q.id,autocomplete:"off",spellcheck:"false",lang:"en",placeholder:"Type your answer"});
+    field.value=e.value;
+    field.addEventListener("input",()=>edit(field.value));
+    field.addEventListener("keydown",ev=>{if(ev.key==="Enter")verify()});
+    controls.append(field);
+  }
+  if(!opts.quiz&&!q.options)actions.append(button("Check",verify,{class:"primary"}));
+  if(q.translation&&!opts.review){
+    actions.append(button("Hint",()=>{hint.textContent=q.explanation;hint.hidden=false}));
+    actions.append(button("Show answer",()=>{
+      if(e.status==="correct"||e.status==="accepted"){updateNote();return}
+      e.status="shown";
+      e.missed=true;
+      state.reviewDone=false;
+      save();buildProgress();updateNote();
+    }));
+  }
+  hint.hidden=true;
+  const accept=q.translation?button("Засчитать с преподавателем",()=>{
+    e.status="accepted";e.missed=false;save();buildProgress();updateNote();
+  }):null;
+  const mark=q.translation?button("Отметить ошибку",()=>{
+    e.status="incorrect";e.missed=true;state.reviewDone=false;save();buildProgress();updateNote();
+  }):null;
+  if(accept)actions.append(accept,mark);
+  card.append(controls,actions,hint,note);
+  parent.append(card);
+  updateNote();
+}
+function details(label,content){
+  const d=node("details");
+  d.append(node("summary",label),node("p",content,{lang:"en"}));
+  return d;
+}
+const photoCards=[
+  ["The laptop doesn't work.","На клавиатуре разлит кофе.","Someone has spilled coffee on it."],
+  ["She can't open the door.","Она ищет ключи в сумке.","She's lost her keys."],
+  ["The plate is empty.","На тарелке остались только крошки.","Someone has eaten the food."],
+  ["There's glass on the floor.","В комнате разбито окно.","Someone has broken the window."]
+];
+function photoSpeaking(main){
+  const grid=node("div",undefined,{class:"grid"});
+  photoCards.forEach(([p,alt,a],i)=>{
+    const card=node("section",undefined,{class:"card"});
+    const img=node("img",undefined,{class:"photo",src:source.photos[i],alt,referrerpolicy:"no-referrer"});
+    const fallback=node("p",alt,{class:"rules"});
+    fallback.hidden=true;
+    img.addEventListener("error",()=>{img.hidden=true;fallback.hidden=false});
+    card.append(img,fallback,node("h3",p,{lang:"en"}),details("Show possible answer",a));
+    grid.append(card);
+  });
+  main.append(grid);
+}
+const checklists=[
+  ["Airport Checklist",["Buy tickets","Pack bags","Call a taxi","Find passports","Check flight details","Have breakfast"],[0,0,1,2,1,2]],
+  ["Party Checklist",["Buy food","Invite friends","Clean the apartment","Choose music","Make a cake","Decorate the room"],[0,0,1,2,1,0]]
+];
+function table(headers,rows){
+  const wrap=node("div",undefined,{class:"scroll"});
+  const t=node("table");
+  const head=t.createTHead().insertRow();
+  headers.forEach(h=>head.append(node("th",h,{scope:"col"})));
+  const body=t.createTBody();
+  rows.forEach(row=>row.forEach((value,i)=>{
+    const tr=i===0?body.insertRow():body.rows[body.rows.length-1];
+    tr.append(node("td",value));
+  }));
+  wrap.append(t);
+  return wrap;
+}
+function toggle(group,labels,change){
+  const bar=node("div",undefined,{class:"actions","aria-label":group});
+  labels.forEach((label,i)=>bar.append(button(label,()=>{
+    Array.from(bar.children).forEach((b,j)=>b.setAttribute("aria-pressed",String(i===j)));
+    change(i);
+  },{"aria-pressed":String(i===0)})));
+  return bar;
+}
+function airport(main){
+  const area=node("div",undefined,{class:"card"});
+  const content=node("div");
+  let round=0;
+  let role=0;
+  function paint(){
+    const [title,jobs,status]=checklists[round];
+    const rows=jobs.map((job,i)=>role?[job,["Already done","Not yet","Just done"][status[i]]]:[job]);
+    content.replaceChildren(node("h3",title),table(role?["Action","Status"]:["Action"],rows));
+  }
+  area.append(toggle("Список",["Airport","Party"],i=>{round=i;paint()}),
+    node("p","Student A задаёт вопросы. Student B смотрит статусы и отвечает. Показывайте каждому игроку только его экран."),
+    toggle("Роль",["Student A","Student B"],i=>{role=i;paint()}),content,
+    details("Show example","A: Have you packed the bags yet? B: Yes, I've already packed them. A: Have you called a taxi yet? B: No, I haven't called one yet."));
+  main.append(area);
+  paint();
+}
+function mystery(main){
+  const names=["Alex","Mia","Ben"];
+  const experiences=["Been to Japan","Ridden a horse","Played golf","Travelled by plane"];
+  const profiles=[[true,false,true,true],[false,true,false,true],[true,true,false,false]];
+  const area=node("div",undefined,{class:"card"});
+  const content=node("div");
+  let person=0;
+  let teacher=false;
+  let revealed=false;
+  function paint(){
+    content.replaceChildren();
+    if(teacher){
+      content.append(node("p","Выбери персонажа. Отвечай по карточке и держи её закрытой от студента."));
+      const select=node("select",undefined,{"aria-label":"Персонаж"});
+      names.forEach((name,i)=>select.append(node("option",name,{value:i})));
+      select.value=person;
+      select.addEventListener("change",()=>{
+        person=Number(select.value);revealed=false;paint();content.querySelector("select").focus();
+      });
+      content.append(select,table(["Experience",names[person]],experiences.map((p,i)=>[p,profiles[person][i]?"Yes, I have.":"No, I haven't."])));
+      return;
+    }
+    content.append(node("p","Задай вопросы о четырёх ситуациях. Затем назови персонажа и составь два предложения о его опыте."));
+    content.append(table(["Experience"],experiences.map(x=>[x])));
+    content.append(details("Show sample questions","Have you ever been to Japan? Have you ever ridden a horse? Have you ever played golf? Have you ever travelled by plane?"));
+    if(revealed){
+      content.append(node("h3","Mystery person: "+names[person]));
+      content.append(table(["Experience",...names],experiences.map((p,i)=>[p,...profiles.map(profile=>profile[i]?"Yes":"No")])));
+    }else{
+      content.append(button("Reveal after guessing",()=>{revealed=true;paint();content.querySelector("h3").setAttribute("tabindex","-1");content.querySelector("h3").focus()}));
+    }
+  }
+  area.append(toggle("Роль",["Student","Teacher"],i=>{teacher=Boolean(i);paint()}),content);
+  main.append(area);paint();
+}
+function spokenDone(main,i){
+  const bar=node("div",undefined,{class:"actions"});
+  const b=button(state.spoken[i]?"Выполнено":"Отметить как выполненное",()=>{
+    state.spoken[i]=!state.spoken[i];save();buildProgress();
+    b.textContent=state.spoken[i]?"Выполнено":"Отметить как выполненное";
+    b.setAttribute("aria-pressed",String(Boolean(state.spoken[i])));
+  },{"aria-pressed":String(Boolean(state.spoken[i]))});
+  bar.style.marginTop="16px";
+  bar.append(b);main.append(bar);
+}
+function storyTask(main){
+  const block=node("section",undefined,{class:"card"});
+  block.append(node("h3","A Busy Monday"));
+  const passage=node("p",undefined,{class:"passage",lang:"en"});
+  const results=node("div",undefined,{class:"status",role:"status"});
+  const parts=story.split(/\[(\d+)\]/);
+  const selects=[];
+  parts.forEach((part,i)=>{
+    if(i%2===0){passage.append(document.createTextNode(part));return}
+    const q=tasks[9][Number(part)-1];
+    const e=entry(q);
+    const label=node("label",part+". ");
+    const s=node("select",undefined,{"aria-label":"Пропуск "+part});
+    s.append(node("option","Choose…",{value:""}));
+    shuffled(q.options,seedFor(q)).forEach(o=>s.append(node("option",o,{value:o})));
+    s.value=e.value;
+    s.addEventListener("change",()=>{e.value=s.value;e.status="";save();buildProgress();report()});
+    selects.push(s);label.append(s);passage.append(label);
+  });
+  function report(showMissing=false){
+    results.replaceChildren();
+    tasks[9].forEach((q,i)=>{
+      const message=feedback(q);
+      if(message)results.append(node("p",(i+1)+". "+message,{class:"feedback"+(entry(q).status==="correct"?"":" retry")}));
+    });
+    if(showMissing)results.append(node("p","Выбери ответ для каждого пропуска, который хочешь проверить."));
+  }
+  block.append(passage,button("Check answers",()=>{
+    const missing=tasks[9].map(check).includes(false);
+    report(missing);
+  },{class:"primary"}),results);
+  main.append(block);report();
+}
+function stats(){
+  return table(["Раздел","Верно / проверено","Точность"],[16,17,18].map(unit=>{
+    const marked=tasks.flat().filter(q=>q.unit===unit&&["correct","accepted","incorrect"].includes(entry(q).status));
+    const right=marked.filter(q=>["correct","accepted"].includes(entry(q).status)).length;
+    return ["Unit "+unit,right+" / "+marked.length,marked.length?Math.round(right/marked.length*100)+"%":"—"];
+  }));
+}
+function review(main){
+  const section=node("section",undefined,{class:"card"});
+  const total=tasks.flat().filter(q=>entry(q).missed).length;
+  section.append(stats(),node("p",total?"На повторение: "+total+".":"Сейчас нет вопросов на повторение."));
+  if(total){
+    section.append(button("Начать повторение",()=>{
+      reviewOrder=tasks.flat().filter(q=>entry(q).missed);
+      reviewOrder.forEach(q=>{
+        const e=entry(q);
+        e.value="";e.tiles=[];e.status="";
+      });
+      save();render(true);
+    },{class:"primary"}));
+    if(reviewOrder.length)section.lastElementChild.hidden=true;
+  }else{
+    section.append(button(state.reviewDone?"Перейти к Final Quiz":"Завершить Review",()=>{
+      state.reviewDone=true;save();go(12);
+    },{class:"primary"}));
+  }
+  main.append(section);
+  const active=reviewOrder.filter(q=>q);
+  for(const q of active)renderQuestion(main,q,{review:true});
+  if(active.length)main.append(button("Обновить результаты",()=>{
+    reviewOrder=[];
+    if(!tasks.flat().some(q=>entry(q).missed))state.reviewDone=true;
+    save();render(true);
+  },{class:"primary"}));
+}
+function quiz(main){
+  tasks[12].forEach(q=>renderQuestion(main,q,{quiz:true}));
+  const result=node("p",undefined,{class:"status",role:"status"});
+  function summary(){
+    const right=tasks[12].filter(q=>entry(q).status==="correct").length;
+    result.textContent=state.quizChecked?"Final Quiz: "+right+" / 10.": "Ответь на все вопросы и нажми Check my answers.";
+  }
+  main.append(button("Check my answers",()=>{
+    if(tasks[12].some(q=>!entry(q).value)){
+      result.textContent="Сначала ответь на все 10 вопросов.";
+      return;
+    }
+    tasks[12].forEach(check);
+    state.quizChecked=true;save();render();
+    const report=$("main").querySelector("[data-quiz-result]");
+    report?.focus();
+  },{class:"primary"}),result);
+  result.setAttribute("data-quiz-result","");
+  result.tabIndex=-1;
+  main.addEventListener("click",ev=>{if(ev.target.matches(".choices button"))summary()},{once:false,signal:renderScope.signal});
+  summary();
+  if(state.quizChecked){
+    main.append(stats());
+    if(tasks.flat().some(q=>entry(q).missed))main.append(button("Review mistakes",()=>go(11)));
+  }
+}
+let renderScope;
+function render(focus=false){
+  renderScope?.abort();
+  renderScope=new AbortController();
+  const i=state.task;
+  const main=$("main");
+  const title=node("h2","Task "+(i+1)+" – "+titles[i],{tabindex:"-1",lang:"en"});
+  main.replaceChildren(title,node("p",directions[i],{class:"context"}));
+  $("nav").replaceChildren(...titles.map((t,j)=>button(String(j+1),()=>go(j),{
+    "aria-label":"Task "+(j+1)+" – "+t,...(i===j?{"aria-current":"step"}:{})
+  })));
+  $("back").disabled=i===0;
+  $("next").disabled=i===12;
+  if(rules[i])main.append(node("p",rules[i],{class:"rules"}));
+  if(i===1){photoSpeaking(main);spokenDone(main,i)}
+  else if(i===5){airport(main);spokenDone(main,i)}
+  else if(i===8){mystery(main);spokenDone(main,i)}
+  else if(i===9)storyTask(main);
+  else if(i===11)review(main);
+  else if(i===12)quiz(main);
+  else{
+    const sections={
+      2:{0:"Part A – Put the words in order",6:"Part B – Choose the past participle"},
+      3:{0:"Part A – Choose just, already or yet",8:"Part B – Put the word in the correct position"},
+      6:{0:"Part A – Choose ever or never",6:"Part B – Build the questions",10:"Part C – Complete the short answers"}
+    };
+    tasks[i].forEach((q,j)=>{
+      const sub=sections[i]?.[j];
+      if(sub)main.append(node("h3",sub,{lang:"en"}));
+      renderQuestion(main,q);
+    });
+  }
+  buildProgress();
+  if(focus){title.focus({preventScroll:true});window.scrollTo(0,0)}
+}
+function go(task){
+  if(!titles[task])return;
+  if(task!==11)reviewOrder=[];
+  state.task=task;save();render(true);
+}
+$("back").addEventListener("click",()=>go(state.task-1));
+$("next").addEventListener("click",()=>go(state.task+1));
+$("reset").addEventListener("click",()=>{
+  if(!window.confirm("Начать сначала? Сохранённый прогресс будет удалён."))return;
+  state=initial();reviewOrder=[];save();render(true);
+});
+render();
+</script>
+</body></html>
