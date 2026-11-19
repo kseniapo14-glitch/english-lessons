@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>At the Coffee Shop · A1</title>
+<style>
+:root{--page:#f5f5fd;--paper:#fff;--ink:#292a43;--muted:#686e86;--purple:#6955d3;--line:#dedff0;--soft:#f1eeff;--blue:#edf5ff}*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:17px/1.6 Arial,sans-serif}main{max-width:950px;margin:auto;padding:36px 22px 60px}header p{color:var(--muted);margin:8px 0}h1{font-size:clamp(34px,6vw,52px);margin:10px 0;line-height:1.1}h2{font-size:27px;line-height:1.3;margin:0 0 18px}h3{font-size:19px;line-height:1.45}button{font:inherit;font-weight:650;border:1px solid transparent;border-radius:12px;padding:11px 16px;cursor:pointer;background:var(--purple);color:#fff}button:disabled{opacity:.5;cursor:default}button:hover{filter:brightness(.96)}button.secondary{background:var(--soft);color:#4f3daa;border-color:var(--line)}:focus-visible{outline:3px solid #a08ee3;outline-offset:3px}.small{font-size:14px;color:var(--muted)}.track{height:9px;background:#e1e2ee;border-radius:20px;overflow:hidden;margin:20px 0 7px}.track i{height:100%;display:block;background:var(--purple);width:0}nav{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}nav button{font-size:14px;padding:8px 11px}nav button[aria-current=step]{background:var(--purple);color:white}.panel{background:var(--paper);border:1px solid var(--line);border-radius:23px;padding:clamp(19px,4vw,35px)}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.page-actions{justify-content:space-between}.note,.mission{padding:16px 19px;border-radius:14px;background:var(--blue);margin:18px 0}.mission{background:var(--soft)}.mission p{margin:7px 0}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0 25px}.phrase{background:#fbfbfe;color:var(--ink);border:1px solid var(--line);text-align:left;padding:18px}.phrase.opened{background:var(--soft);border-color:#c4b9ec}.phrase strong,.phrase span,.phrase small{display:block}.phrase span{margin:10px 0;font-size:16px;font-weight:500}.phrase small{font-size:14px;font-weight:400;color:var(--muted)}.choices{display:grid;gap:10px;margin:18px 0}.choice{background:#fafaff;color:var(--ink);border-color:var(--line);text-align:left;font-weight:500}.choice.selected{background:var(--soft);border-color:var(--purple);box-shadow:0 0 0 1px var(--purple)}.question{margin:20px 0}.feedback{border-radius:12px;padding:14px 17px;margin:18px 0}.feedback p{margin:8px 0}.feedback.good{background:#e7f4ec;color:#24503b}.feedback.bad{background:#fff0ec;color:#793f34}.feedback button{font-size:14px}.sentence{min-height:65px;background:var(--soft);border:1px dashed #c4b9e5;border-radius:13px;padding:13px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}.tiles,.bank{display:flex;flex-wrap:wrap;gap:8px;margin:15px 0}.tile{background:white;color:var(--ink);border-color:#cac4e3;font-weight:500}.tile.used{background:#e2ddf7}.wrong-word{background:#ffdad3;text-decoration:underline}.chat{margin:22px 0}.bubble{padding:14px 18px;max-width:85%;border-radius:15px;margin:12px 0}.bubble small{display:block;font-size:13px;font-weight:bold;color:var(--muted);margin-bottom:4px}.bubble.barista{background:var(--blue);border-bottom-left-radius:4px}.bubble.customer{background:var(--soft);margin-left:auto;border-bottom-right-radius:4px}details{border:1px solid var(--line);padding:13px 16px;border-radius:13px;margin:18px 0}summary{cursor:pointer;font-weight:650}table{width:100%;border-collapse:collapse;margin-top:12px}td{padding:9px 3px;border-bottom:1px solid var(--line);font-size:15px}td:last-child{text-align:right;white-space:nowrap}.receipt{background:#fff;border:1px solid #ddddeb;max-width:440px;margin:24px auto;padding:27px;box-shadow:0 5px 20px #2720410d}.receipt-title{font-size:23px;font-weight:bold;letter-spacing:2px}.receipt-row{display:flex;justify-content:space-between;gap:15px;padding:10px 0;font-size:16px}.receipt .total{border-top:1px dashed #b8b8c9;margin-top:12px;padding-top:18px}.receipt p{color:var(--muted)}.dialogue{background:#fafaff;border:1px solid var(--line);border-radius:14px;padding:18px}.dialogue p{line-height:2.1}.blank{color:#49359f;background:var(--soft);border:1px dashed #aca0d5;padding:6px 9px;margin:3px;font-size:15px;font-weight:500}.blank.target{outline:2px solid var(--purple);outline-offset:1px}.blank.correct{background:#e7f4ec;border-color:#9dc3ac}.score{font-size:57px;font-weight:750;line-height:1.2;margin:20px 0}.bank{padding:14px;background:var(--blue);border-radius:13px}[hidden]{display:none!important}@media(max-width:600px){main{padding:23px 12px 40px}.panel{border-radius:17px}.cards{grid-template-columns:1fr}.bubble{max-width:95%}nav{gap:5px}nav button{padding:7px 9px}.receipt{padding:20px}.dialogue{padding:12px}.blank{font-size:14px}}
+</style></head><body><main><header><p class="small">American English File · Practical English · A1</p><h1>At the Coffee Shop</h1><p>Самостоятельная практика · 12–15 минут · 6 этапов</p></header><div class="track" aria-hidden="true"><i id="bar"></i></div><p class="small" id="progress"></p><nav id="nav" aria-label="Этапы"></nav><section class="panel" id="app"></section><div class="actions"><button class="secondary" data-action="review">Review Mistakes</button><button class="secondary" data-action="reset">Practice Again</button></div><p class="small" id="storage">Прогресс сохраняется в этом браузере. Интернет не нужен.</p><noscript>Для тренажёра нужен JavaScript.</noscript></main><script>'use strict';
+const stages=['Remember the Phrases','Who Says It?','Choose the Best Reply','Build the Phrase','Coffee Shop Simulator','Final Review'];
+const phrases=[
+ ['Barista','Can I help you?','Могу я вам помочь?','— Can I help you? — Yes, a latte, please.'],
+ ['Barista','What would you like?','Что бы вы хотели?','— What would you like? — A cappuccino, please.'],
+ ['Barista','Single or double?','Одинарный или двойной эспрессо?','— Single or double? — Double, please.'],
+ ['Barista','Regular or large?','Обычный размер или большой?','— Regular or large? — Large, please.'],
+ ['Barista','Anything else?','Что-нибудь ещё?','— Anything else? — A brownie, please.'],
+ ['Barista','For here or to go?','Здесь или с собой?','— For here or to go? — To go, please.'],
+ ['Barista','Do you want a receipt?','Вам нужен чек?','— Do you want a receipt? — No, thank you.'],
+ ['Customer','Can I have a latte, please?','Можно мне латте, пожалуйста?','— What would you like? — Can I have a latte, please?'],
+ ['Customer','A double espresso, please.','Двойной эспрессо, пожалуйста.','— Can I help you? — A double espresso, please.'],
+ ['Customer','With oat milk, please.','С овсяным молоком, пожалуйста.','— What kind of milk? — With oat milk, please.'],
+ ['Customer','To go, please.','С собой, пожалуйста.','— For here or to go? — To go, please.'],
+ ['Customer','How much is that?','Сколько это стоит?','— How much is that? — £7.50, please.'],
+ ['Customer','No, thank you.','Нет, спасибо.','— Anything else? — No, thank you.']
+];
+const MENU={latteLarge:530,latteRegular:450,brownie:350,espressoDouble:365,croissant:350,cappuccinoRegular:420,cappuccinoLarge:480};
+const money=pence=>'£'+(pence/100).toFixed(2);
+const tasks=[];
+function add(stage,type,prompt,answer,explanation,extra={}){let task={id:'q'+tasks.length,stage,type,prompt,answer,explanation,...extra};tasks.push(task);return task;}
+[
+ ['Can I help you?','Barista','The barista offers help. Бариста предлагает принять заказ.'],
+ ['Can I have a cappuccino?','Customer','The customer orders a drink. Покупатель заказывает напиток.'],
+ ['Anything else?','Barista','The barista asks about more items. Бариста предлагает добавить что-нибудь.'],
+ ['With oat milk, please.','Customer','The customer chooses milk. Покупатель просит овсяное молоко.'],
+ ['Regular or large?','Barista','The barista asks about the size. Бариста спрашивает о размере.'],
+ ['How much is that?','Customer','The customer asks about the price. Покупатель спрашивает цену.'],
+ ['For here or to go?','Barista','The barista asks where you will have your order. Здесь или с собой?'],
+ ['Do you want a receipt?','Barista','The barista asks if you need a receipt. Бариста предлагает чек.']
+].forEach(([p,a,e])=>add(1,'choice',p,a,e,{options:['Barista','Customer'],auto:true}));
+[
+ ['Can I help you?',['Yes, a latte, please.','At nine.','I’m from Moscow.'],'Yes, a latte, please.','Бариста предлагает принять заказ. Назови напиток.'],
+ ['Regular or large?',['For here.','Large, please.','No receipt.'],'Large, please.','Это вопрос о размере. Large — большой.'],
+ ['Anything else?',['Yes, a brownie, please.','I’m twenty-five.','It’s seven.'],'Yes, a brownie, please.','Бариста предлагает добавить что-нибудь. Можно попросить брауни.'],
+ ['For here or to go?',['A double espresso.','To go, please.','It’s £4.'],'To go, please.','Нужно выбрать здесь или с собой. To go — с собой.'],
+ ['Single or double?',['Double, please.','Oat milk.','Thank you.'],'Double, please.','Нужно выбрать одинарный или двойной эспрессо.'],
+ ['Do you want a receipt?',['No, thank you.','A croissant.','Regular.'],'No, thank you.','Это вопрос о чеке. No, thank you — вежливый отказ.'],
+ ['What would you like?',['A cappuccino, please.','At eight.','I’m tired.'],'A cappuccino, please.','Бариста спрашивает, что ты хочешь заказать.'],
+ ['That’s £7.50, please.',['Here you go.','Half past seven.','With oat milk.'],'Here you go.','Here you go говорим, передавая деньги или карту.']
+].forEach(([p,options,a,e])=>add(2,'choice',p,a,e,{options}));
+[
+ ['Can I have a latte, please?','have / Can / a latte / I / please','Вопрос: Can + I + have + предмет + please?'],
+ ['Regular or large?','or / Regular / large','Два размера соединяем словом or.'],
+ ['Anything else?','else / Anything','Anything else? — Что-нибудь ещё?'],
+ ['To go, please.','go / To / please','To go — с собой. Please добавляет вежливость.'],
+ ['How much is that?','that / How much / is','How much + is + that? — Сколько это стоит?'],
+ ['With oat milk, please.','oat milk / With / please','With + oat milk + please.']
+].forEach(([a,w,e])=>add(3,'order','Put the words in the correct order.',a,e,{tokens:w.split(' / ')}));
+const scenarios=[
+ {name:'A Simple Order',goal:'Закажи большой латте и брауни с собой.',items:[['Large latte','latteLarge'],['Brownie','brownie']],where:'To go',steps:[
+ ['What would you like?','Can I have a latte, please?',['It’s half past six.','I live in London.'],'Назови напиток: Can I have a latte, please?'],
+ ['Regular or large?','Large, please.',['Regular, please.','To go, please.'],'По задаче нужен большой размер — large.'],
+ ['Anything else?','A brownie, please.',['No, thank you.','A croissant, please.'],'Добавь брауни, как указано в задании.'],
+ ['For here or to go?','To go, please.',['For here, please.','With oat milk, please.'],'Заказ нужен с собой — to go.'],
+ ['PAY','Here you go.',['How old are you?','Large, please.'],'Передавая оплату, скажи Here you go.']
+ ]},
+ {name:'A Different Order',goal:'Закажи двойной эспрессо и круассан. Ты остаёшься здесь.',items:[['Double espresso','espressoDouble'],['Croissant','croissant']],where:'For here',steps:[
+ ['Can I help you?','A double espresso, please.',['A single espresso, please.','To go, please.'],'По задаче нужен двойной эспрессо.'],
+ ['Anything else?','A croissant, please.',['A brownie, please.','No, thank you.'],'Добавь круассан.'],
+ ['For here or to go?','For here, please.',['To go, please.','Double, please.'],'Ты остаёшься здесь — for here.'],
+ ['PAY','Here you go.',['With oat milk.','Regular, please.'],'Here you go — реплика при оплате.']
+ ]},
+ {name:'Something Is Unavailable',goal:'Закажи капучино и брауни. Если брауни нет, выбери круассан. Напиток обычного размера, с собой.',items:[['Regular cappuccino','cappuccinoRegular'],['Croissant','croissant']],where:'To go',steps:[
+ ['What would you like?','A cappuccino and a brownie, please.',['A latte and a brownie, please.','I’m from Moscow.'],'Назови капучино и брауни.'],
+ ['Sorry, we don’t have brownies today.','Oh, OK. Can I have a croissant instead?',['No, a brownie, please.','It’s half past seven.'],'Instead — вместо этого. Предложи замену на круассан.'],
+ ['Regular or large?','Regular, please.',['Large, please.','A brownie, please.'],'По задаче нужен обычный размер — regular.'],
+ ['For here or to go?','To go, please.',['For here, please.','No receipt, please.'],'Заказ нужен с собой — to go.']
+ ]}
+];
+scenarios.forEach((scenario,scenarioIndex)=>{
+ scenario.total=scenario.items.reduce((sum,[,key])=>sum+MENU[key],0);
+ scenario.taskIds=scenario.steps.map(([p,a,distractors,e],step)=>add(4,'choice',p==='PAY'?`That’s ${money(scenario.total)}, please.`:p,a,e,{options:[a,...distractors],scenario:scenarioIndex,step}).id);
+});
+const finalRows=[
+ ['Customer','___ a cappuccino, please?','Can I have','Can I have + предмет + please?'],
+ ['Customer','___.','Large, please','Нужен ответ о размере: Large, please.'],
+ ['Barista','___?','Anything else','Бариста предлагает добавить что-нибудь.'],
+ ['Customer','___.','To go, please','Ответ о формате заказа: с собой.'],
+ ['Customer','___?','How much is that','Сначала покупатель спрашивает цену.'],
+ ['Customer','___.','No, thank you','Вежливый отказ от чека.']
+];
+finalRows.forEach(([speaker,prompt,a,e])=>add(5,'bank',prompt,a,e,{speaker}));
+const KEY='coffee-shop-a1-v1';
+function fresh(){return {stage:0,positions:{},answers:{},records:{},mistakes:{},cards:{},options:{},simOrders:{},scenario:0,simPositions:{},completed:{},finalTarget:0,finished:false,review:false,reviewIds:[],reviewPosition:0};}
+let state=fresh();try{state={...state,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch{}
+state.stage=Math.max(0,Math.min(5,+state.stage||0));
+const el=id=>document.getElementById(id);
+function escape(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function norm(value){return String(value??'').toLowerCase().replace(/[’‘]/g,"'").replace(/\bi'm\b/g,'i am').replace(/\bit's\b/g,'it is').replace(/[^a-z0-9£\s]/g,' ').replace(/\s+/g,' ').trim();}
+function shuffle(values){const a=[...values];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function ordered(key,values){if(!state.options[key])state.options[key]=shuffle(values);return state.options[key];}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch{el('storage').textContent='Браузер ограничил сохранение. Ответы доступны до закрытия страницы.';}}
+function listForScenario(index){const scenario=scenarios[index];if(!state.simOrders[index]){const ids=[...scenario.taskIds];if(index===0&&Math.random()<.5)[ids[1],ids[2]]=[ids[2],ids[1]];state.simOrders[index]=ids;}return state.simOrders[index].map(id=>tasks.find(t=>t.id===id));}
+function currentList(){if(state.review)return state.reviewIds.map(id=>tasks.find(t=>t.id===id));if(state.stage===4)return listForScenario(state.scenario);return tasks.filter(t=>t.stage===state.stage);}
+function currentPosition(){return state.review?state.reviewPosition:state.stage===4?state.simPositions[state.scenario]||0:state.positions[state.stage]||0;}
+function currentTask(){return currentList()[currentPosition()];}
+function valueOf(task){const a=state.answers[task.id];return task.type==='order'&&Array.isArray(a)?a.map(i=>task.tokens[i]).join(' '):a;}
+function record(task){const value=valueOf(task);if(!norm(value))return false;const correct=norm(value)===norm(task.answer);const previous=state.records[task.id];state.records[task.id]={first:previous?previous.first:correct,last:correct,attempts:(previous?.attempts||0)+1};if(!correct)state.mistakes[task.id]=true;return true;}
+function clearAnswer(task){delete state.answers[task.id];if(state.records[task.id])state.records[task.id].last=null;}
+function feedback(task){const r=state.records[task.id];if(!r||r.last===null)return '';return `<div class="feedback ${r.last?'good':'bad'}" role="status"><b>${r.last?'Correct!':'Not quite. Try again.'}</b>${!r.last?`<p>Подходящий ответ: <b>${escape(task.answer)}</b></p>`:''}<p>${escape(task.explanation)}</p>${!r.last?`<button class="secondary" data-retry="${task.id}">Try Again</button>`:''}</div>`;}
+function tiles(task){if(state.records[task.id]?.last)return `<div class="sentence">${escape(task.answer)}</div>`;const a=Array.isArray(state.answers[task.id])?state.answers[task.id]:[];const checked=state.records[task.id];const expected=norm(task.answer).split(' ');let offset=0;const sentence=a.map((index,position)=>{const word=task.tokens[index];const words=norm(word).split(' ');const wrong=checked?.last===false&&words.some((part,k)=>part!==expected[offset+k]);offset+=words.length;return `<button class="tile used ${wrong?'wrong-word':''}" data-remove="${position}">${escape(word)}</button>`;}).join('');return `<div class="sentence" aria-live="polite">${sentence||'Нажимай слова по порядку.'}${checked?.last?`<span>${task.answer.endsWith('?')?'?':'.'}</span>`:''}</div><div class="tiles">${ordered(task.id+'tiles',task.tokens.map((_,i)=>i)).filter(i=>!a.includes(i)).map(i=>`<button class="tile" data-token="${i}">${escape(task.tokens[i])}</button>`).join('')}</div>`;}
+function question(task){const a=state.answers[task.id];return `<div class="question">${task.stage===4&&!state.review?'':`<h3>${escape(task.prompt)}</h3>`}${task.type==='order'?tiles(task):`<div class="choices">${ordered(task.id,task.options).map(option=>`<button class="choice ${a===option?'selected':''}" data-option="${escape(option)}" aria-pressed="${a===option}">${escape(option)}</button>`).join('')}</div>`}${task.auto?'':'<button data-action="check">Check</button>'}<div id="feedback">${feedback(task)}</div></div>`;}
+function cardHTML(){return `<h2>Remember the Phrases</h2><p>Нажми на карточку, чтобы открыть перевод и короткий пример.</p><div class="note">AmE · For here or to go? — Здесь или с собой?<br>To go, please. — С собой, пожалуйста.</div>${['Barista','Customer'].map(role=>`<section><h3>${role.toUpperCase()}</h3><div class="cards">${phrases.map((phrase,index)=>phrase[0]===role?`<button class="phrase ${state.cards[index]?'opened':''}" data-card="${index}" aria-expanded="${!!state.cards[index]}"><strong>${escape(phrase[1])}</strong>${state.cards[index]?`<span>${escape(phrase[2])}</span><small>${escape(phrase[3])}</small>`:''}</button>`:'').join('')}</div></section>`).join('')}<button data-action="start">Start Practice</button>`;}
+function menu(){return `<details><summary>Menu</summary><table><tr><td>Latte · regular / large</td><td>${money(MENU.latteRegular)} / ${money(MENU.latteLarge)}</td></tr><tr><td>Cappuccino · regular / large</td><td>${money(MENU.cappuccinoRegular)} / ${money(MENU.cappuccinoLarge)}</td></tr><tr><td>Double espresso</td><td>${money(MENU.espressoDouble)}</td></tr><tr><td>Brownie</td><td>${money(MENU.brownie)}</td></tr><tr><td>Croissant</td><td>${money(MENU.croissant)}</td></tr></table><p class="small">Учебное меню. Недостающие цены подобраны под суммы из сценария.</p></details>`;}
+function receipt(index){const s=scenarios[index];return `<div class="receipt"><div class="receipt-title">COFFEE SHOP</div><p>${s.where}</p>${s.items.map(([name,key])=>`<div class="receipt-row"><span>${name}</span><b>${money(MENU[key])}</b></div>`).join('')}<div class="receipt-row total"><span>Total</span><b>${money(s.total)}</b></div><p>Thank you!</p></div>`;}
+function simulator(){const index=state.scenario,s=scenarios[index],list=listForScenario(index),position=state.simPositions[index]||0;const task=list[position];let text=`<h2>Coffee Shop Simulator</h2><p class="small">Order ${index+1} / 3 · ${s.name}</p><div class="mission"><b>Твоя задача</b><p>${s.goal}</p></div>${menu()}`;if(state.completed[index])return text+receipt(index)+`<button data-action="next-order">${index===2?'Final Review':'Next Order'}</button>`;const previous=list.slice(0,position).filter(t=>state.records[t.id]?.last);text+=`<div class="chat">${previous.map(t=>`<div class="bubble barista"><small>Barista</small>${escape(t.prompt)}</div><div class="bubble customer"><small>You</small>${escape(t.answer)}</div>`).join('')}<div class="bubble barista"><small>Barista</small>${escape(task.prompt)}</div></div><p class="small">Шаг ${position+1} / ${list.length}. Выбери ответ по задаче.</p>${question(task)}<div class="actions"><button data-action="sim-next" ${state.records[task.id]?.last?'':'disabled'}>${position===list.length-1?'See Receipt':'Continue'}</button></div>`;return text;}
+function finalHTML(){const qs=tasks.filter(t=>t.stage===5);const target=state.finalTarget;const blank=i=>{const task=qs[i],a=state.answers[task.id];return `<button class="blank ${target===i?'target':''} ${state.records[task.id]?.last?'correct':''}" data-target="${i}" aria-label="Пропуск ${i+1}">${i+1}. ${a?escape(a):'Choose a phrase'}</button>`;};return `<h2>Complete the Conversation</h2><p>Выбери пропуск, затем фразу из банка. Каждую фразу используй один раз.</p><div class="bank">${ordered('finalbank',qs.map(t=>t.answer)).map(phrase=>{const used=qs.findIndex(t=>state.answers[t.id]===phrase);return `<button class="tile" data-bank="${escape(phrase)}" ${used>=0&&used!==target?'disabled':''}>${escape(phrase)}</button>`;}).join('')}</div><div class="dialogue"><p><b>Barista:</b> Hi! What would you like?</p><p><b>Customer:</b> ${blank(0)} a cappuccino, please?</p><p><b>Barista:</b> Regular or large?</p><p><b>Customer:</b> ${blank(1)}.</p><p><b>Barista:</b> ${blank(2)}?</p><p><b>Customer:</b> Yes, a croissant, please.</p><p><b>Barista:</b> For here or to go?</p><p><b>Customer:</b> ${blank(3)}.</p><p><b>Customer:</b> ${blank(4)}?</p><p><b>Barista:</b> That’s ${money(MENU.cappuccinoLarge+MENU.croissant)}, please. Do you want a receipt?</p><p><b>Customer:</b> ${blank(5)}.</p></div><div class="actions"><button data-action="check-final">Check Conversation</button>${qs.every(t=>state.records[t.id])?'<button data-action="finish">See Results</button>':''}</div><div id="feedback">${qs.filter(t=>state.records[t.id]?.last===false).map((t,i)=>`<h3>Пропуск ${qs.indexOf(t)+1}</h3>${feedback(t)}`).join('')}${qs.every(t=>state.records[t.id]?.last)?'<p class="feedback good">Correct! Диалог собран верно.</p>':''}</div>`;}
+function results(){const finals=tasks.filter(t=>t.stage===5),initial=finals.filter(t=>state.records[t.id]?.first).length,now=tasks.filter(t=>state.records[t.id]?.last).length;return `<h2>${now===tasks.length?'At the Coffee Shop — Completed':'Your Results'}</h2><div class="score">${initial} / 6</div><p>Final Review · первая проверка<br>Верно сейчас ${finals.filter(t=>state.records[t.id]?.last).length} / 6</p><p>По всему тренажёру верно сейчас ${now} / ${tasks.length}.<br>Карточек просмотрено ${Object.keys(state.cards).length} / ${phrases.length}.</p><h3>You can now…</h3><ul><li>Order a drink and food.</li><li>Answer a barista’s questions.</li><li>Ask about the price.</li><li>Change your order if something is unavailable.</li></ul><div class="actions"><button data-action="review">Review Mistakes</button><button class="secondary" data-action="reset">Practice Again</button></div>`;}
+function progress(){const done=tasks.filter(t=>state.records[t.id]?.last).length;el('bar').style.width=done/tasks.length*100+'%';el('progress').textContent=`Верно ${done} / ${tasks.length} · Заданий с ошибками ${Object.keys(state.mistakes).length}`;el('nav').innerHTML=stages.map((name,i)=>`<button class="secondary" data-stage="${i}" aria-current="${!state.review&&state.stage===i?'step':'false'}">${i+1}. ${name}</button>`).join('');save();}
+function render(scroll=false){let html;if(state.review){const task=currentTask();html=`<h2>Review Mistakes</h2><p>Первоначальные ошибки сохраняются. Исправленные ответы отмечаются.</p>${task?`<p class="small">${state.reviewPosition+1} / ${state.reviewIds.length} · ${state.records[task.id]?.last?'Исправлено':'Повторение'}</p>${task.type==='bank'?reviewBank(task):question(task)}<div class="actions"><button data-action="review-next" ${state.records[task.id]?.last!==null&&state.records[task.id]?'':'disabled'}>Next</button></div>`:'<div class="note">Раунд повторения завершён.</div>'}`;}else if(state.stage===0)html=cardHTML();else if(state.stage===4)html=simulator();else if(state.stage===5)html=state.finished?results():finalHTML();else{const task=currentTask();html=`<h2>${stages[state.stage]}</h2><p class="small">Question ${currentPosition()+1} / ${currentList().length}</p>${question(task)}<div class="actions page-actions"><button class="secondary" data-action="previous" ${currentPosition()?'':'disabled'}>Previous</button><button data-action="next" ${state.records[task.id]?.last===null||!state.records[task.id]?'disabled':''}>${currentPosition()===currentList().length-1?'Next Stage':'Next'}</button></div>`;}el('app').innerHTML=html;progress();if(scroll)el('app').scrollIntoView({block:'start'});}
+function reviewBank(task){return `<h3>${task.speaker}: ${escape(task.prompt)}</h3><div class="choices">${ordered(task.id,tasks.filter(t=>t.stage===5).map(t=>t.answer)).map(option=>`<button class="choice ${state.answers[task.id]===option?'selected':''}" data-option="${escape(option)}">${escape(option)}</button>`).join('')}</div><button data-action="check">Check</button><div id="feedback">${feedback(task)}</div>`;}
+function check(){const task=currentTask();if(!record(task)){el('feedback').innerHTML='<p class="note">Сначала дай ответ.</p>';return;}render();}
+function change(value){const task=currentTask();state.answers[task.id]=value;if(state.records[task.id])state.records[task.id].last=null;}
+document.addEventListener('click',event=>{
+ const button=event.target.closest('button');if(!button)return;const d=button.dataset;
+ if(d.stage!==undefined){state.stage=+d.stage;state.review=false;render(true);return;}
+ if(d.card!==undefined){state.cards[d.card]=!state.cards[d.card];render();return;}
+ if(d.option){change(d.option);if(currentTask().auto)check();else render();return;}
+ if(d.token!==undefined){const value=state.answers[currentTask().id];change([...(Array.isArray(value)?value:[]),+d.token]);render();return;}
+ if(d.remove!==undefined){const a=[...state.answers[currentTask().id]];a.splice(+d.remove,1);change(a);render();return;}
+ if(d.retry){clearAnswer(tasks.find(t=>t.id===d.retry));render();return;}
+ if(d.target!==undefined){state.finalTarget=+d.target;render();return;}
+ if(d.bank){const qs=tasks.filter(t=>t.stage===5),task=qs[state.finalTarget];state.answers[task.id]=d.bank;if(state.records[task.id])state.records[task.id].last=null;state.finalTarget=qs.findIndex(t=>!state.answers[t.id]);if(state.finalTarget<0)state.finalTarget=0;render();return;}
+ if(d.action==='check'){check();return;}
+ if(d.action==='start'){state.stage=1;render(true);return;}
+ if(d.action==='previous'){state.positions[state.stage]=currentPosition()-1;render();return;}
+ if(d.action==='next'){if(currentPosition()<currentList().length-1)state.positions[state.stage]=currentPosition()+1;else state.stage++;render(true);return;}
+ if(d.action==='sim-next'){if(!state.records[currentTask().id]?.last)return;if(currentPosition()<currentList().length-1)state.simPositions[state.scenario]=currentPosition()+1;else state.completed[state.scenario]=true;render(true);return;}
+ if(d.action==='next-order'){if(state.scenario<2)state.scenario++;else state.stage=5;render(true);return;}
+ if(d.action==='check-final'){const qs=tasks.filter(t=>t.stage===5);qs.forEach(t=>record(t));render();if(qs.some(t=>!norm(state.answers[t.id])))el('feedback').innerHTML+='<p class="note">Заполни все шесть пропусков.</p>';return;}
+ if(d.action==='finish'){state.finished=true;render(true);return;}
+ if(d.action==='review'){state.reviewIds=shuffle(Object.keys(state.mistakes));state.reviewPosition=0;state.review=true;state.reviewIds.forEach(id=>clearAnswer(tasks.find(t=>t.id===id)));render(true);return;}
+ if(d.action==='review-next'){state.reviewPosition++;render(true);return;}
+ if(d.action==='reset'&&confirm('Начать новую попытку? Ответы и прогресс будут сброшены.')){state=fresh();render(true);}
+});
+render();
+</script></body></html>
